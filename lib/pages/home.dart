@@ -22,15 +22,6 @@ class _HomeState extends State<Home> {
     wd=ModalRoute.of(context)?.settings.arguments as WeatherData;
     Color? bgColor=wd.is_day==1?Colors.blue[300]:Colors.grey[600];
 
-    List<String> weatherInfo= [
-      'test',
-      'adf',
-      'ttt'
-      // 'FeelsLike: ${wd.feelslike_c}\u1d52C, Wind: ${wd.wind}${wd.wind_dir}',
-      // 'Precipitation: ${wd.precip_mm}, Humidity: ${wd.humidity}',
-      // 'Visibility in KM: ${wd.vis_km}, UV: ${wd.uv}'
-    ];
-
     return SafeArea(
         child: Scaffold(
           backgroundColor: bgColor,
