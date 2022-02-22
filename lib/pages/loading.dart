@@ -23,11 +23,13 @@ class _LoadingState extends State<Loading> {
 
    setWeather();
 
+
   }
 
   void setWeather() async{
-    await wd.getWeather('Shanghai');
+    await wd.getWeather('Helsinki');
     print(wd.country);
+    Navigator.pushReplacementNamed(context, '/home', arguments: wd);
   }
 
 
