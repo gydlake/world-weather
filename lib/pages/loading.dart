@@ -12,27 +12,21 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-
-
   WeatherData wd = WeatherData();
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-   setWeather();
-
-
+    setWeather();
   }
 
-  void setWeather() async{
+  void setWeather() async {
     await wd.getWeather('Oulu');
     print(wd.country);
     Navigator.pushReplacementNamed(context, '/home', arguments: wd);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +35,11 @@ class _LoadingState extends State<Loading> {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
             Text(
-                'Loading',
+              'Loading',
               style: TextStyle(
-                  fontSize: 40.0,
-                  letterSpacing: 2.0,
-                  color: Colors.red[600]
-              ),
+                  fontSize: 40.0, letterSpacing: 2.0, color: Colors.red[600]),
             ),
             SizedBox(height: 30.0),
             SpinKitFadingCircle(

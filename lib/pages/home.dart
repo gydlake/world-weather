@@ -8,29 +8,25 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-void receiveData() {
-
-}
+void receiveData() {}
 
 class _HomeState extends State<Home> {
-
   late WeatherData wd;
-
 
   @override
   Widget build(BuildContext context) {
-    wd=ModalRoute.of(context)?.settings.arguments as WeatherData;
-    Color? bgColor=wd.is_day==1?Colors.blue[300]:Colors.grey[600];
+    wd = ModalRoute.of(context)?.settings.arguments as WeatherData;
+    Color? bgColor = wd.is_day == 1 ? Colors.blue[300] : Colors.grey[600];
 
     return SafeArea(
-        child: Scaffold(
-          backgroundColor: bgColor,
-          body: SingleChildScrollView(
-            physics: ScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: Scaffold(
+        backgroundColor: bgColor,
+        body: SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -40,9 +36,11 @@ class _HomeState extends State<Home> {
                       height: 150.0,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(width: 20.0,),
+                    SizedBox(
+                      width: 20.0,
+                    ),
                     FlatButton.icon(
-                      onPressed: (){},
+                      onPressed: () {},
                       icon: Icon(Icons.edit_location),
                       label: Container(
                         width: 150, // change width as you need
@@ -56,17 +54,16 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                                 fontSize: 30.0,
                                 letterSpacing: 2.0,
-                                color: Colors.red[600]
-                            ),
+                                color: Colors.red[600]),
                           ),
                         ),
                       ),
                     ),
-
                   ],
                 ),
-
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Text(
                   '${wd.temp_c}\u1d52C, ${wd.condition_txt} ',
                   textAlign: TextAlign.center,
@@ -76,7 +73,9 @@ class _HomeState extends State<Home> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Text(
                   'FeelsLike: ${wd.feelslike_c}\u1d52C, Wind: ${wd.wind}${wd.wind_dir}',
                   textAlign: TextAlign.start,
@@ -86,7 +85,9 @@ class _HomeState extends State<Home> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Text(
                   'Precipitation: ${wd.precip_mm}, Humidity: ${wd.humidity}',
                   textAlign: TextAlign.start,
@@ -96,7 +97,9 @@ class _HomeState extends State<Home> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Text(
                   'Visibility in Km: ${wd.vis_km}, UV: ${wd.uv}',
                   textAlign: TextAlign.start,
@@ -107,8 +110,8 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ],
-          ),
             ),
+          ),
         ),
       ),
     );
