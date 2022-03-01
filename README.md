@@ -1,8 +1,8 @@
-# world_weather
-
-Weather in several cities. -- Flutter application.
+# World Weather
 
 ## Getting Started
+
+**Note: Please apply your own API KEY in WeatherAPI website and use it in weather_data.dart file.**
 
 This project is a starting point for a Flutter application.
 
@@ -15,6 +15,7 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Powered by WeatherAPI
+**Powered by WeatherAPI**
 
-More will come later...
+## Reference:
+1. The tutorial of The Net Ninja.

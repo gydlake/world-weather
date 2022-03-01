@@ -88,14 +88,27 @@ class _HomeState extends State<Home> {
                         height: 100, // change height as you need
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            '${wd?.location} ${wd?.country}',
-                            textAlign: TextAlign.left,
-                            maxLines: 2, // change max line you need
-                            style: TextStyle(
-                                fontSize: 30.0,
-                                letterSpacing: 2.0,
-                                color: Colors.red[600]),
+                          child: Column(
+                            children: [
+                              Text(
+                                '${wd?.location} ',
+                                textAlign: TextAlign.left,
+                                maxLines: 2, // change max line you need
+                                style: TextStyle(
+                                    fontSize: 30.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.red[400]),
+                              ),
+                              Text(
+                                '${wd?.country}',
+                                textAlign: TextAlign.left,
+                                maxLines: 2, // change max line you need
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.red[800]),
+                              )
+                            ],
                           ),
                         ),
                       ),

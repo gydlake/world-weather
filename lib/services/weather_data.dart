@@ -16,7 +16,7 @@ class WeatherData {
   double? vis_km;
   double? uv;
 
-  // API key
+  // API key, Setting your own API KEY
   static const API_KEY = '1bcb74d02904457eb0d145052221802';
 
   WeatherData(
@@ -63,7 +63,7 @@ class WeatherData {
       return true;
     } else {
       // If that response was not OK, throw an error.
-      throw Exception('Failed to load json data');
+      //throw Exception('Failed to load json data');
       return false;
     }
   }
