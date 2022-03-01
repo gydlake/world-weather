@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                       width: 20.0,
                     ),
                     FlatButton.icon(
-                      // onPressed: () {},
+                      onPressed: () {},
                       icon: Icon(Icons.edit_location),
                       label: Container(
                         width: 150, // change width as you need
@@ -124,6 +124,18 @@ class _HomeState extends State<Home> {
                     }),
               ],
             ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Text(
+              '5 Days',
+              textAlign: TextAlign.center,
+              style:TextStyle(
+                color: Colors.white,
+
+
+              )
           ),
         ),
       ),
