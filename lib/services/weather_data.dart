@@ -59,7 +59,7 @@ class WeatherData {
       vis_km = data['current']['vis_km'];
       uv = data['current']['uv'];
 
-      print(wind);
+      //print(wind);
       return true;
     } else {
       // If that response was not OK, throw an error.

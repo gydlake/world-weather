@@ -24,7 +24,7 @@ class _LoadingState extends State<Loading> {
 
   void setWeather() async {
     await wd.getWeather('Oulu');
-    print(wd.country);
+    //print(wd.country);
     Navigator.pushReplacementNamed(context, '/home', arguments: wd);
   }
 

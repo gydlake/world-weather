@@ -18,6 +18,39 @@ class _HomeState extends State<Home> {
     wd = ModalRoute.of(context)?.settings.arguments as WeatherData;
     Color? bgColor = wd.is_day == 1 ? Colors.blue[300] : Colors.grey[600];
 
+    List<String> wInDetail = [
+      'FeelsLike: ${wd.feelslike_c} \u1d52C, Wind: ${wd.wind} m/s ${wd.wind_dir}',
+      'Precipitation: ${wd.precip_mm} mm, Humidity: ${wd.humidity}%',
+      'Visibility: ${wd.vis_km} km, UV: ${wd.uv}',
+    ];
+
+    List<Text> _transformWord(String word) {
+      List<String> name = word.split(' ');
+      List<Text> textWidgets = [];
+      for (int i = 0; i < name.length; i++) {
+        if (name[i].contains(':')) {
+          Text bold = Text(
+            name[i] + ' ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+              fontSize: 20.0,
+            ),
+          );
+          textWidgets.add(bold);
+        } else {
+          Text normal = Text(
+            name[i] + ' ',
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          );
+          textWidgets.add(normal);
+        }
+      }
+      return textWidgets;
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: bgColor,
@@ -40,7 +73,7 @@ class _HomeState extends State<Home> {
                       width: 20.0,
                     ),
                     FlatButton.icon(
-                      onPressed: () {},
+                      // onPressed: () {},
                       icon: Icon(Icons.edit_location),
                       label: Container(
                         width: 150, // change width as you need
@@ -65,7 +98,7 @@ class _HomeState extends State<Home> {
                   height: 20.0,
                 ),
                 Text(
-                  '${wd.temp_c}\u1d52C, ${wd.condition_txt} ',
+                  '${wd.temp_c} \u1d52C, ${wd.condition_txt} ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30.0,
@@ -76,39 +109,19 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 20.0,
                 ),
-                Text(
-                  'FeelsLike: ${wd.feelslike_c}\u1d52C, Wind: ${wd.wind}${wd.wind_dir}',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    letterSpacing: 2.0,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Text(
-                  'Precipitation: ${wd.precip_mm}, Humidity: ${wd.humidity}',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    letterSpacing: 2.0,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Text(
-                  'Visibility in Km: ${wd.vis_km}, UV: ${wd.uv}',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    letterSpacing: 2.0,
-                    color: Colors.white,
-                  ),
-                ),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: wInDetail.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          onTap: () {},
+                          title: Row(
+                            children: _transformWord(wInDetail[index]),
+                          ), //Text(wInDetail[index]),
+                        ),
+                      );
+                    }),
               ],
             ),
           ),
