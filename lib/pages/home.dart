@@ -11,17 +11,20 @@ class Home extends StatefulWidget {
 void receiveData() {}
 
 class _HomeState extends State<Home> {
-  late WeatherData wd;
+  WeatherData? wd;
 
   @override
   Widget build(BuildContext context) {
-    wd = ModalRoute.of(context)?.settings.arguments as WeatherData;
-    Color? bgColor = wd.is_day == 1 ? Colors.blue[300] : Colors.grey[600];
+    wd = wd!=null? wd:ModalRoute.of(context)?.settings.arguments as WeatherData;
+    Color? bgColor = wd?.is_day == 1 ? Colors.blue[300] : Colors.grey[600];
 
     List<String> wInDetail = [
-      'FeelsLike: ${wd.feelslike_c} \u1d52C, Wind: ${wd.wind} m/s ${wd.wind_dir}',
-      'Precipitation: ${wd.precip_mm} mm, Humidity: ${wd.humidity}%',
-      'Visibility: ${wd.vis_km} km, UV: ${wd.uv}',
+      'FeelsLike: ${wd?.feelslike_c} \u1d52C',
+      'Wind: ${wd?.wind} m/s ${wd?.wind_dir}',
+      'Precipitation: ${wd?.precip_mm} mm',
+      'Humidity: ${wd?.humidity}%',
+      'Visibility: ${wd?.vis_km} km',
+      'UV: ${wd?.uv!}',
     ];
 
     List<Text> _transformWord(String word) {
@@ -64,7 +67,7 @@ class _HomeState extends State<Home> {
                 Row(
                   children: [
                     Image.network(
-                      'https:${wd.condition_icon}',
+                      'https:${wd?.condition_icon}',
                       width: 150.0,
                       height: 150.0,
                       fit: BoxFit.cover,
@@ -73,7 +76,12 @@ class _HomeState extends State<Home> {
                       width: 20.0,
                     ),
                     FlatButton.icon(
-                      onPressed: () {},
+                      onPressed: () async{
+                        dynamic ret_wd= await Navigator.pushNamed(context, '/chooseLocation');
+                        setState(() {
+                          wd= ret_wd;
+                        });
+                      },
                       icon: Icon(Icons.edit_location),
                       label: Container(
                         width: 150, // change width as you need
@@ -81,7 +89,7 @@ class _HomeState extends State<Home> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            '${wd.location} ${wd.country}',
+                            '${wd?.location} ${wd?.country}',
                             textAlign: TextAlign.left,
                             maxLines: 2, // change max line you need
                             style: TextStyle(
@@ -98,7 +106,7 @@ class _HomeState extends State<Home> {
                   height: 20.0,
                 ),
                 Text(
-                  '${wd.temp_c} \u1d52C, ${wd.condition_txt} ',
+                  '${wd?.temp_c} \u1d52C, ${wd?.condition_txt} ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30.0,
