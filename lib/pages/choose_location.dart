@@ -1,3 +1,6 @@
+// File name: choose_location.dart
+// Type or select a city, then click OK button to return to home page.
+
 import 'package:flutter/material.dart';
 import 'package:world_weather/services/weather_data.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +18,9 @@ class _ChooseLocationState extends State<ChooseLocation> {
   String locWarning = '';
   bool locExist = true;
   final tfController = TextEditingController();
+
   List<String> cities = [
+    // The listed cities used for users to select.
     'Oulu',
     'Helsinki',
     'Beijing',
@@ -36,6 +41,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
+                // Show a warning message if the typed name is not an unknown city.
                 locWarning,
                 style: TextStyle(
                   fontSize: 30.0,
@@ -46,6 +52,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                 height: 20.0,
               ),
               TextField(
+                // Edit box to show the selected city or directly type one.
                 controller: tfController,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
@@ -62,6 +69,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                 color: Colors.grey[300],
                 alignment: Alignment.center,
                 child: ListView.builder(
+                    // List view the cities for selection.
                     shrinkWrap: true,
                     itemCount: cities.length,
                     itemBuilder: (context, index) {
@@ -81,7 +89,11 @@ class _ChooseLocationState extends State<ChooseLocation> {
                       );
                     }),
               ),
+              SizedBox(
+                height: 20.0,
+              ),
               RaisedButton(
+                  // OK button for returning to home page.
                   onPressed: () async {
                     locExist = await wd.getWeather(tfController.text);
                     if (locExist) {
@@ -94,17 +106,18 @@ class _ChooseLocationState extends State<ChooseLocation> {
                             'The city name is wrong or its info is not available!';
                       });
                       Timer(Duration(seconds: 2), () {
+                        // Using a timer to show the warning only 2 seconds, then disappear.
                         setState(() {
-                          locWarning ='';
+                          locWarning = '';
                           tfController.text = '';
                         });
                       });
                     }
                   },
                   child: Text(
-                      'OK',
+                    'OK',
                     style: TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 50.0,
                       letterSpacing: 2.0,
                       color: Colors.red,
                       fontWeight: FontWeight.bold,

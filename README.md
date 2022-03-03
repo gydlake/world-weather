@@ -15,7 +15,7 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-**Powered by WeatherAPI**
+Powered by [WeatherAPI.com](https://www.weatherapi.com/)
 
 ## Reference:
 1. The tutorial of The Net Ninja.

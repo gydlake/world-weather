@@ -1,3 +1,6 @@
+// File name: loading.dart
+// At the beginning of runtime, read weather info from WeatherAPI.com
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -16,16 +19,19 @@ class _LoadingState extends State<Loading> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     setWeather();
   }
 
+  // Wait until getting the weather data.
   void setWeather() async {
-    await wd.getWeather('Helsinki');
-    //print(wd.country);
-    Navigator.pushReplacementNamed(context, '/home', arguments: wd);
+    var ret = await wd.getWeather('Oulu');
+
+    if (ret)
+      Navigator.pushReplacementNamed(context, '/home', arguments: wd);
+    else
+      throw Exception('Loading error!');
   }
 
   @override
