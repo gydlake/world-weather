@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-**Note: Please apply your own API KEY in WeatherAPI website and use it in weather_data.dart file.**
+**Note: Please apply your own API KEY in WeatherAPI website and use it in weather_data.dart file (My API KEY is changed on April 5, 2022, so the API KEY here is not valid anymore.**
 
 This project is a Flutter world weather application.
 
